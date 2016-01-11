@@ -126,12 +126,17 @@ public class Genealogical {
     }
 
     private static Person getOrCreate(final Map<String, Person> people, final String name, final String dateOfBirth) {
+        final Person person;
         if (people.containsKey(name)) {
-            return people.get(name);
+            person = people.get(name);
+            if (dateOfBirth != null) {
+                person.dateOfBirth = dateOfBirth;
+            }
         } else {
-            final Person person = new Person(name, dateOfBirth);
+            person = new Person(name, dateOfBirth);
             people.put(name, person);
-            return person;
         }
+
+        return person;
     }
 }
