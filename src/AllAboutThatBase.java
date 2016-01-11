@@ -65,6 +65,10 @@ public class AllAboutThatBase {
 
     private static BigInteger convert(final String number, final int base) {
         if (base == 1) {
+            if (number.contains("0")) {
+                throw new NumberFormatException();
+            }
+
             return BigInteger.valueOf(number.length());
         }
 

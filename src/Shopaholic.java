@@ -11,25 +11,11 @@ public class Shopaholic {
 
             Arrays.sort(ns);
             long result = 0;
-            for (int items = 3; items <= ns.length; items++) {
-                result = Math.max(result, getTotal(ns, items));
+            for (int i = ns.length - 3; i >= 0; i -= 3) {
+                result += ns[i];
             }
 
             System.out.println(result);
         }
-    }
-
-    private static long getTotal(final int[] ns, final int items) {
-        long total = 0;
-        final int itemCount = items / 3;
-        for (int n = ns.length - 1; n >= 0; n -= items) {
-            for (int i = 0; i < itemCount; i++) {
-                if (n >= (items - 1)) {
-                    total += ns[n - items + 1 + i];
-                }
-            }
-        }
-
-        return total;
     }
 }
